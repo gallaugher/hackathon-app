@@ -18,6 +18,7 @@
 		3EB4446124426D6500E3AF8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB4446024426D6500E3AF8C /* Assets.xcassets */; };
 		3EB4446424426D6500E3AF8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB4446224426D6500E3AF8C /* LaunchScreen.storyboard */; };
 		3EBADC5B24427C3800AD0311 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EBADC5A24427C3800AD0311 /* GoogleService-Info.plist */; };
+		3ED9D5E4244B9C4200ED6E99 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED9D5E3244B9C4200ED6E99 /* UIViewController+alert.swift */; };
 		3EE968D1244494D8004E28C2 /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE968D0244494D8004E28C2 /* Teams.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		3EB4446324426D6500E3AF8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EB4446524426D6500E3AF8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EBADC5A24427C3800AD0311 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3ED9D5E3244B9C4200ED6E99 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		3EE968D0244494D8004E28C2 /* Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		7B8A95FB4264DF1941425710 /* Pods-Hackathon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon.debug.xcconfig"; path = "Target Support Files/Pods-Hackathon/Pods-Hackathon.debug.xcconfig"; sourceTree = "<group>"; };
 		F99EE1F45D7C00F7FC0A6683 /* Pods_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 				3EE968D0244494D8004E28C2 /* Teams.swift */,
 				3EB4445B24426D6300E3AF8C /* TeamsListViewController.swift */,
 				3E3D0A2A2442B51E00F34520 /* TeamDetailTableViewController.swift */,
+				3ED9D5E3244B9C4200ED6E99 /* UIViewController+alert.swift */,
 				3EB4445D24426D6300E3AF8C /* Main.storyboard */,
 				3EB4446024426D6500E3AF8C /* Assets.xcassets */,
 				3EB4446224426D6500E3AF8C /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 				3EB4445A24426D6300E3AF8C /* SceneDelegate.swift in Sources */,
 				3E3D0A2D2442BDAF00F34520 /* Team.swift in Sources */,
 				3E3D0A2B2442B51E00F34520 /* TeamDetailTableViewController.swift in Sources */,
+				3ED9D5E4244B9C4200ED6E99 /* UIViewController+alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
