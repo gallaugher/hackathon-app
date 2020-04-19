@@ -19,7 +19,6 @@ class TeamDetailTableViewController: UITableViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var team: Team!
-    var appImage: UIImage! // TODO: Move this to a Team property
     let regionDistance: CLLocationDistance = 50_000 // 50KM
     var imagePicker = UIImagePickerController()
     
@@ -77,6 +76,15 @@ class TeamDetailTableViewController: UITableViewController {
         team.saveData { success in
             if success {
                 self.leaveViewController()
+                
+                self.team.saveImage { (success) in
+                    if success {
+                        self.leaveViewController()
+                    } else {
+                        print("⚠️ WARNING: Image not stored")
+                    }
+                }
+                
             } else {
                 print("😡 ERROR: Couldn't leave this view controller because data wasn't saved.")
             }
@@ -122,12 +130,12 @@ extension TeamDetailTableViewController: UINavigationControllerDelegate, UIImage
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            appImage = editedImage
+            team.appImage = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            appImage = originalImage
+            team.appImage = originalImage
         }
         dismiss(animated: true) {
-            self.imageView.image = self.appImage
+            self.imageView.image = self.team.appImage
         }
     }
     
