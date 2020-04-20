@@ -119,7 +119,7 @@ class Team: NSObject, MKAnnotation {
         // convert appImage to a Data type so it can be saved by Firebase Storage
         guard let imageToSave = self.appImage.jpegData(compressionQuality: 0.5) else {
             print("😡 ERROR: could not convert image to data format.")
-            return
+            return completed(false)
         }
         
         let uploadMetaData = StorageMetadata()
@@ -132,23 +132,22 @@ class Team: NSObject, MKAnnotation {
         let storageRef = storage.reference().child(documentID).child(self.appImageUUID)
         let uploadTask = storageRef.putData(imageToSave, metadata: uploadMetaData) { (metadata, error) in
             guard error == nil else {
-                print("😡 ERROR: during .putData storage upload for reference \(storageRef). Error = \(error?.localizedDescription)")
-                completed(false)
-                return
+                print("😡 ERROR: during .putData storage upload for reference \(storageRef). Error = \(error?.localizedDescription ?? "<unknown error>")")
+                return completed(false)
             }
             print("😎 Upload worked! Metadata is \(metadata)")
         }
         
         uploadTask.observe(.success) { (snapshot) in
             // Create the dictionary representing the data we want to save
-            let dataToSave = self.dictionary// This will either create a new doc at documentUUID or update the existing doc with that name
+            let dataToSave = self.dictionary
             let ref = db.collection("teams").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
-                    print("ERROR: updating doc \(self.appImageUUID) in documentID \(self.documentID). Error = \(error.localizedDescription)")
+                    print("ERROR: saving document \(self.documentID) in success observer. Error = \(error.localizedDescription)")
                     completed(false)
                 } else {
-                    print("👍🏽 Docuent updated with ref ID \(ref.documentID)")
+                    print("👍🏽 Document updated with ref ID \(ref.documentID)")
                     completed(true)
                 }
             }
@@ -156,7 +155,7 @@ class Team: NSObject, MKAnnotation {
         
         uploadTask.observe(.failure) { (snapshot) in
             if let error = snapshot.error {
-                print("ERROR: \(error.localizedDescription) upload task for file \(self.appImageUUID) failed in document \(self.documentID)")
+                print("ERROR: \(error.localizedDescription) uplaod task for file \(self.appImageUUID)")
             }
             return completed(false)
         }

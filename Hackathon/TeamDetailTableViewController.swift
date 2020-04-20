@@ -73,18 +73,14 @@ class TeamDetailTableViewController: UITableViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         updateFromUserInterface()
-        team.saveData { success in
+        team.saveData { (success) in
             if success {
-                self.leaveViewController()
-                
                 self.team.saveImage { (success) in
-                    if success {
-                        self.leaveViewController()
-                    } else {
-                        print("⚠️ WARNING: Image not stored")
+                    if !success {
+                        print("⚠️ WARNING: Could not save image.")
                     }
+                    self.leaveViewController()
                 }
-                
             } else {
                 print("😡 ERROR: Couldn't leave this view controller because data wasn't saved.")
             }
